@@ -18,11 +18,9 @@ WORKDIR /app
 
 # Copy files specifying dependencies
 COPY server/package.json server/package-lock.json ./server/
-COPY admin-ui/package.json admin-ui/package-lock.json ./admin-ui/
 
 # Install dependencies
 RUN cd server; npm ci --loglevel=$NPM_LOG_LEVEL;
-RUN cd admin-ui; npm ci --loglevel=$NPM_LOG_LEVEL;
 
 # Copy Prisma schema
 COPY server/prisma/schema.prisma ./server/prisma/
@@ -34,7 +32,7 @@ RUN cd server; npm run prisma:generate;
 COPY . .
 
 # Build code
-RUN set -e; (cd server; npm run build) & (cd admin-ui; npm run build)
+RUN set -e; (cd server; npm run build);
 
 # Expose the port the server listens to
 EXPOSE 3000
