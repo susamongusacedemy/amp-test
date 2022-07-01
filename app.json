@@ -1,0 +1,4 @@
+{
+  "name": "amplication-app-deploy",
+  "stack": "container"
+}
