@@ -1,1 +1,4 @@
-I love using resut
+build:
+  docker:
+    web: Dockerfile
+    
